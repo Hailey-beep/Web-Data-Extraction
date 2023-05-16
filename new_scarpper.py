@@ -12,11 +12,12 @@ START_URL = "https://en.wikipedia.org/wiki/List_of_brown_dwarfs"
 # Webdriver
 browser = webdriver.Chrome("D:/Setup/chromedriver_win32/chromedriver.exe")
 browser.get(START_URL)
+
 # Has the program wait for the info from the website to load
 time.sleep(10)
 
 # Make a page request using the request module
-
+page = request.get(hyperlink)
 
 # Get all the tables of the page using find_all() method
 
