@@ -22,8 +22,23 @@ page = request.get(hyperlink)
 # Get all the tables of the page using find_all() method
 
 
+soup = BeautifulSoup(browser.page_source, "html.parser")
+
 # Create an empty list
 list = []
 
 # Get all the <tr> tags from the table
+def scrape():
+  for 
+ 
+#
+scrape()
 
+# Define headers for CSV file
+header = ["Star_name", "Distance", "Mass", "Radius"]
+
+#
+dwarf_planets = pd.DataFrame(list)
+
+# Converts data frame into CSV
+dwarf_planets.tocvs('new_scrapped_data", index=True, index_label="id")
