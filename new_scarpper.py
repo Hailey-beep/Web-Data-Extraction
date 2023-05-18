@@ -11,17 +11,16 @@ START_URL = "https://en.wikipedia.org/wiki/List_of_brown_dwarfs"
 
 # Webdriver
 browser = webdriver.Chrome("D:/Setup/chromedriver_win32/chromedriver.exe")
-browser.get(START_URL)
+#browser.get(START_URL)
 
 # Has the program wait for the info from the website to load
 time.sleep(10)
 
 # Make a page request using the request module
-page = request.get(hyperlink)
+page = requests.get(START_URL)
+print(page)
 
 # Get all the tables of the page using find_all() method
-
-
 soup = BeautifulSoup(browser.page_source, "html.parser")
 
 # Create an empty list
@@ -29,7 +28,10 @@ list = []
 
 # Get all the <tr> tags from the table
 def scrape():
-  for 
+  
+  table_body = 
+
+  table_data = table_body.
  
 #
 scrape()
@@ -41,4 +43,4 @@ header = ["Star_name", "Distance", "Mass", "Radius"]
 dwarf_planets = pd.DataFrame(list)
 
 # Converts data frame into CSV
-dwarf_planets.tocvs('new_scrapped_data", index=True, index_label="id")
+dwarf_planets.to_cvs("new_scrapped_data", index=True, index_label="id")
