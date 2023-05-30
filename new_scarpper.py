@@ -20,27 +20,47 @@ time.sleep(10)
 page = requests.get(START_URL)
 print(page)
 
-# Get all the tables of the page using find_all() method
-soup = BeautifulSoup(browser.page_source, "html.parser")
-
 # Create an empty list
-list = []
+data_list = []
 
-# Get all the <tr> tags from the table
+
 def scrape():
+  # Get all the tables of the page using find_all() method
+  soup = BeautifulSoup(browser.page_source, "html.parser")
   
-  table_body = 
+  # Get all the <tr> tags from the table
+  table_body = soup.find_all('table')
+  print(len(table_body))
+  
+  #For loop to take out all the <td> tages
+  table_rows = table_body[4].find_all('tr')
+  for tr in table_rows:
+    td = tr.find_all('td')
+    row = [i.text.rstrip() for i in td]
+    #Keep all rows in the list
+    data_list.append(row)
+    
+    Star_names = []
+  Distance =[]
+  Mass = []
+  Radius =[]
 
-  table_data = table_body.
+  print(temp_list)
+
+  for i in range(1,len(temp_list)):
+    Star_names.append(temp_list[i][0])
+    Distance.append(temp_list[i][5])
+    Mass.append(temp_list[i][7])
+    Radius.append(temp_list[i][8])
  
-#
+# Call Scrape function
 scrape()
 
 # Define headers for CSV file
-header = ["Star_name", "Distance", "Mass", "Radius"]
+headers = ["Star_name", "Distance", "Mass", "Radius"]
 
-#
-dwarf_planets = pd.DataFrame(list)
+# Create data frame
+dwarf_planets = pd.DataFrame(data_list, columns=headers)
 
 # Converts data frame into CSV
 dwarf_planets.to_cvs("new_scrapped_data", index=True, index_label="id")
