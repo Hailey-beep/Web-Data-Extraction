@@ -26,7 +26,7 @@ temp_list= []
 # IMP NOTE: The page at the given URL is maintained by "wikipedia", which might be updated in future.
 # Hence check the index number poperly for star_table[1]
 # Currently, there are there 3 table with class = "class":"wikitable sortable" and "Field brown dwarfs" Table is the 3rd table
-# Thus the index is 3
+# Thus the index is 2
 table_rows = star_table[2].find_all('tr')
 
 for tr in table_rows:
